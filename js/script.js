@@ -1,34 +1,39 @@
-"use strict";
+const numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
 
-if (4 == 9) {
-    console.log("OK!");
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+};
+
+let i = 0;
+
+while (i < 2) {
+
+    const a = prompt("Один из последних просмотренных фильмов?", ""),
+        b = prompt("На сколько вы оцените его?", "");
+
+    if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+    } else {
+        i--;
+    }
+
+    i++;
+
+
+}
+
+if (personalMovieDB.count <= 10) {
+    console.log('Просмотрено мало фильмов');
+} else if (personalMovieDB.count > 10 && personalMovieDB.count <= 30) {
+    console.log("Вы классический зритель");
+} else if (personalMovieDB.count > 30) {
+    console.log('Вы киноман');
 } else {
-    console.log("error");
+    console.log('Произошла ошибка!');
 }
 
-const num = 50;
-
-if (num < 49) {
-    console.log("error");
-} else if (num > 100) {
-    console.log("Много");
-} else {
-    console.log("OK");
-}
-
-num == 50 ? console.log("OK") : console.log("Error");
-
-switch (num) {
-    case 49:
-        console.log('Неверно');
-        break;
-    case 100:
-        console.log('Неверно');
-        break;
-    case 50:
-        console.log('В точку!');
-        break;
-    default:
-        console.log('Не в этот раз');
-        break;
-}
+console.log(personalMovieDB);
